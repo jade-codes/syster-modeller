@@ -169,7 +169,7 @@ export class ModellerPanel {
 
     private handleMessage(message: WebviewMessage): void {
         switch (message.type) {
-            case 'ready':
+            case 'ready': {
                 // Webview is ready, send initial diagram
                 const editor = vscode.window.activeTextEditor;
                 if (editor && this.isSysMLFile(editor.document)) {
@@ -178,6 +178,7 @@ export class ModellerPanel {
                     this.refreshDiagram(); // Get whole workspace
                 }
                 break;
+            }
             case 'refresh':
                 this.refreshDiagram(message.uri ? vscode.Uri.parse(message.uri) : undefined);
                 break;
@@ -208,19 +209,19 @@ export class ModellerPanel {
     }
 
     // TODO: Implement modeller actions
-    private async handleCreateElement(payload: unknown): Promise<void> {
+    private async handleCreateElement(_payload: unknown): Promise<void> {
         vscode.window.showInformationMessage('Create element: Not yet implemented');
     }
 
-    private async handleUpdateElement(payload: unknown): Promise<void> {
+    private async handleUpdateElement(_payload: unknown): Promise<void> {
         vscode.window.showInformationMessage('Update element: Not yet implemented');
     }
 
-    private async handleDeleteElement(payload: unknown): Promise<void> {
+    private async handleDeleteElement(_payload: unknown): Promise<void> {
         vscode.window.showInformationMessage('Delete element: Not yet implemented');
     }
 
-    private async handleCreateRelationship(payload: unknown): Promise<void> {
+    private async handleCreateRelationship(_payload: unknown): Promise<void> {
         vscode.window.showInformationMessage('Create relationship: Not yet implemented');
     }
 
